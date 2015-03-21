@@ -1,0 +1,24 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "db": {
+    "name": "windmap",
+    "host": "localhost",
+    "schemas": {
+      "stations": {
+        "id": "Number",
+        "name": "String",
+        "address": "String",
+        "latitude": "Number",
+        "longitude": "Number"
+      },
+      "samples": {
+        "date": "Date",
+        "stationId": "Number",
+        "wv": "Number",
+        "wd": "Number"
+      }
+    }
+  }
+}
