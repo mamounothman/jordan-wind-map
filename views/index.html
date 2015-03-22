@@ -2,15 +2,14 @@
 <html itemscope itemtype="http://schema.org/Map" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8"/>
-    <title>東京風速</title>
-    <meta itemprop="name" property="og:title" content="東京風速"/>
-    <meta name="description" itemprop="description" property="og:description" content="Tokyo Wind Map"/>
-    <meta name="author" itemprop="author" content="Cameron Beccario"/>
-    <meta property="fb:admins" content="510217216"/>
+    <title>Jordan wind map</title>
+    <meta itemprop="name" property="og:title" content="Jordan wind map"/>
+    <meta name="description" itemprop="description" property="og:description" content="Jordan wind map"/>
+    <meta name="author" itemprop="author" content="Ma'moun Othman"/>
     <meta itemprop="image" property="og:image" content="http://air.nullschool.net/preview.png"/>
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="apple-touch-icon" sizes="120x120" href="/iphone-icon.png"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="/ipad-icon.png"/>
+    <link rel="apple-touch-icon" size="152x152" href="/ipad-icon.png"/>
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 </head>
 <body>
@@ -28,65 +27,23 @@
         <div id="overlay">
             <canvas id="overlay-canvas"></canvas>
         </div>
-        <div id="details">
-            <h1 id="type">東京都風速</h1>
-            <h1 id="type2">Tokyo Wind Speed</h1>
-            <h3 id="sample-label" style="display: none">&nbsp;</h3>
-            <h2 id="status">&nbsp;</h2>
-            <h2 id="location">&nbsp;</h2>
-            <h2 id="point-details">&nbsp;</h2>
-        </div>
-        <div id="arrow">↓</div>
-        <div id="notice">世界風速は<a href="http://earth.nullschool.net/jp">こちら</a></div>
+        <div id="notice">Orignal map <a target="_blank" href="http://earth.nullschool.net/jp">こちら</a></div>
     </div>
 
-    <!-- <div id="about">
-        <h1>About</h1>
-        <span>Control | </span>
-            <span class="text-button" id="previous-day">«前日</span><span> – </span>
-            <span class="text-button" id="previous-hour">1時間前</span><span> – </span>
-            <span class="text-button" id="next-hour">1時間後</span><span> – </span>
-            <span class="text-button" id="next-day">翌日»</span><span> – </span>
-            <span class="text-button" id="current-conditions">最新</span><span> – </span>
-            <span class="text-button" id="show-location">現在地</span><p></p>
-        <span>Overlay | </span>
-            <span class="text-button" id="wind">None</span><span> – </span>
-            <span class="text-button" id="temp">Temp</span><span> – </span>
-            <span class="text-button" id="hum">Hum</span><span> – </span>
-            <span class="text-button" id="wv">WV</span><span> – </span>
-            <span class="text-button" id="in">IN</span><span> – </span>
-            <span class="text-button" id="no">NO</span><span> – </span>
-            <span class="text-button" id="no2">NO<span class="sub">2</span></span><span> – </span>
-            <span class="text-button" id="nox">NO<span class="sub">X</span></span><p></p>
-        <span style="visibility: hidden">Overlay | </span>
-            <span class="text-button" id="ox">O<span class="sub">X</span></span><span> – </span>
-            <span class="text-button" id="so2">SO<span class="sub">2</span></span><span> – </span>
-            <span class="text-button" id="co">CO</span><span> – </span>
-            <span class="text-button" id="ch4">CH<span class="sub">4</span></span><span> – </span>
-            <span class="text-button" id="nmhc">NMHC</span><span> – </span>
-            <span class="text-button" id="spm">SPM</span><span> – </span>
-            <span class="text-button" id="pm25">PM<span class="sub">2.5</span></span><p></p>
-        <p>Gallery |
-            <a href="/map/wind/2013/09/22/01">無風</a>,
-            <a href="/map/wind/2013/08/21/15">そよ風</a>,
-            <a href="/map/wind/2013/09/01/16">雷雨</a>,
-            <a href="/map/hum/2013/10/16/08">台風26号+湿度</a>,
-            <a href="/map/hum/2013/10/16/11">台風26号後+湿度</a></p>
-        <p>Air Data | <a href="http://www.kankyo.metro.tokyo.jp">東京都環境局環境改善部大気保全課</a></p>
+    <div id="about">
+        <h1 id="type2">Jordan Wind Speed</h1>
+        <p>Air Data | <a target="_blank" href="http://pro.arabiaweather.com">Arabia weather</a></p>
         <p>Map Data |
-            <a href="http://www.mlit.go.jp/kokudoseisaku/gis">国土数値情報（行政区域データ）国土交通省</a></p>
+            <a target="_blank" href="http://www.naturalearthdata.com">Natural Earth</a></p>
         <p>Author |
-            Cameron Beccario <a href="https://twitter.com/cambecc">@cambecc</a>,
-            <a href="https://www.facebook.com/fuusoku">Facebook</a>, <a href="http://b.hatena.ne.jp/entry/air.nullschool.net/">はてな</a></p>
-        <p>Source | <a href="https://github.com/cambecc/air">github.com/cambecc/air</a></p>
+            Ma'moun Othman <a target="_blank" href="https://twitter.com/mamounothman">@mamounothman</a>,
+            <a target="_blank" href="https://www.facebook.com/mamoun.othman">Facebook</a></p>
+        <p>Source | <a target="_blank" href="https://github.com/cambecc/air">github.com/cambecc/air</a></p>
         <p>Modules |
-            <a href="http://nodejs.org/">node.js</a>,
-            <a href="http://d3js.org/">D3.js</a>,
-            <a href="https://github.com/cujojs/when">when.js</a>,
-            <a href="https://github.com/brianc/node-postgres">node-postgres</a></p>
-        <p>Inspiration | <a href="http://hint.fm/wind/">HINT.FM wind map</a></p>
-        <p>免責事項 | 正確な情報を提供するためのものではありません</p>
-    </div> -->
+            <a target="_blank" href="http://nodejs.org/">node.js</a>,
+            <a target="_blank" href="http://d3js.org/">D3.js</a>,
+            <a target="_blank" href="https://github.com/cujojs/when">when.js</a>
+    </div>
 
     <script src="/js/when.js" charset="utf-8"></script>
     <script src="/js/d3.js" charset="utf-8"></script>

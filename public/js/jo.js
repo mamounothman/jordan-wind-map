@@ -67,7 +67,7 @@
             projection: projection,
             displayBounds: bounds,
             particleCount: Math.round(bounds.height / 0.24),
-            maxParticleAge: 90,  // max number of frames a particle is drawn before regeneration
+            maxParticleAge: 200,  // max number of frames a particle is drawn before regeneration
             velocityScale: +(bounds.height / 700).toFixed(3),  // particle speed as number of pixels per unit vector
             fieldMaskWidth: isFF ? 2 : Math.ceil(bounds.height * 0.06),  // Wide strokes on FF are very slow
             fadeFillStyle: isFF ? "rgba(0, 0, 0, 0.95)" : "rgba(0, 0, 0, 0.97)",  // FF Mac alpha behaves differently
@@ -102,7 +102,7 @@
         var w = window, d = document.documentElement, b = document.getElementsByTagName("body")[0];
         var x = w.innerWidth || d.clientWidth || b.clientWidth;
         var y = w.innerHeight || d.clientHeight || b.clientHeight;
-        return {width: x, height: y};
+        return {width: 700, height: 580};
     }();
 
     function parseDisplayData() {
@@ -345,10 +345,10 @@
     function displayStatus(status, error) {
         if (error) {
             bad = true;  // errors are sticky--let's not overwrite error information if it occurs
-            d3.select(STATUS_ID).node().textContent = "⁂ " + error;
+            //d3.select(STATUS_ID).node().textContent = "⁂ " + error;
         }
         else if (!bad) {
-            d3.select(STATUS_ID).node().textContent = "⁂ " + status;
+            //d3.select(STATUS_ID).node().textContent = "⁂ " + status;
         }
     }
 
@@ -909,28 +909,28 @@
     }
 
     function postInit(settings, field, overlay) {
-        updateSampleLabel();
-        d3.select(LOCATION_ID).node().innerHTML = "&nbsp;";
-        d3.select(POINT_DETAILS_ID).node().innerHTML = "&nbsp;";
-        d3.select(SHOW_LOCATION_ID).on("click", function() {
-            plotCurrentPosition(settings.projection);
-        });
-        // d3.select(STOP_ANIMATION_ID).on("click", function() {
-        //     settings.stopAnimation();
+        // updateSampleLabel();
+        // d3.select(LOCATION_ID).node().innerHTML = "&nbsp;";
+        // d3.select(POINT_DETAILS_ID).node().innerHTML = "&nbsp;";
+        // d3.select(SHOW_LOCATION_ID).on("click", function() {
+        //     plotCurrentPosition(settings.projection);
         // });
-        d3.select(DISPLAY_ID).on("click", function() {
-            var p = d3.mouse(this);
-            var c = settings.projection.invert(p);
-            var v = field(p[0], p[1]);
-            if (v[2] >= INVISIBLE) {
-                d3.select(LOCATION_ID).text("⁂ " + formatCoordinates(c[0], c[1]));
-                var pointDetails = "⁂ " + formatVector(v[0], v[1]);
-                if (overlay) {
-                    pointDetails += " | " + formatOverlayValue(overlay(p[0], p[1]));
-                }
-                d3.select(POINT_DETAILS_ID).node().innerHTML = pointDetails;
-            }
-        });
+        // // d3.select(STOP_ANIMATION_ID).on("click", function() {
+        // //     settings.stopAnimation();
+        // // });
+        // d3.select(DISPLAY_ID).on("click", function() {
+        //     var p = d3.mouse(this);
+        //     var c = settings.projection.invert(p);
+        //     var v = field(p[0], p[1]);
+        //     if (v[2] >= INVISIBLE) {
+        //         d3.select(LOCATION_ID).text("⁂ " + formatCoordinates(c[0], c[1]));
+        //         var pointDetails = "⁂ " + formatVector(v[0], v[1]);
+        //         if (overlay) {
+        //             pointDetails += " | " + formatOverlayValue(overlay(p[0], p[1]));
+        //         }
+        //         d3.select(POINT_DETAILS_ID).node().innerHTML = pointDetails;
+        //     }
+        // });
     }
 
     function prepareStations(rows) {

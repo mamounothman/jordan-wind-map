@@ -45,6 +45,8 @@ body {
 
 #display {
     position: relative;
+    float: right;
+    width: 70%;
 }
 
 #field, #overlay {
@@ -55,7 +57,7 @@ body {
 
 #details {
     position: absolute;
-    bottom: 3%;
+    top: 3%;
     left: 2%;
 }
 
@@ -79,6 +81,8 @@ body {
     padding-bottom: 1em;
     position: absolute;
     left: 2%;
+    float: left;
+    width: 50%;
 }
 
 h1, h2 {
@@ -91,7 +95,7 @@ h3 {
 }
 
 p, span {
-    font-size: 1.75em;
+    font-size: 1em;
 }
 
 .sup {
