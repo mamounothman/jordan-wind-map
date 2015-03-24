@@ -49,7 +49,7 @@ stations.forEach(function(station, index){
             stationId: station.id,
           };
           if(res.statusCode === 200) {
-            SampleObj.wv = parseFloat(sampleData.wspeed) * 0.2;
+            SampleObj.wv = parseFloat(sampleData.wspeed) * 0.5;
             SampleObj.wd = tools.cardinalToDegrees(sampleData.currentwdir);
           }
           else {

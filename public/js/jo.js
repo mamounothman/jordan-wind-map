@@ -67,7 +67,7 @@
             projection: projection,
             displayBounds: bounds,
             particleCount: Math.round(bounds.height / 0.24),
-            maxParticleAge: 200,  // max number of frames a particle is drawn before regeneration
+            maxParticleAge: 40,  // max number of frames a particle is drawn before regeneration
             velocityScale: +(bounds.height / 700).toFixed(3),  // particle speed as number of pixels per unit vector
             fieldMaskWidth: isFF ? 2 : Math.ceil(bounds.height * 0.06),  // Wide strokes on FF are very slow
             fadeFillStyle: isFF ? "rgba(0, 0, 0, 0.95)" : "rgba(0, 0, 0, 0.97)",  // FF Mac alpha behaves differently
@@ -118,7 +118,6 @@
         return {
             topography: "/data/jo-topo.json",
             stations: "/data/stations.json",
-            //stations: "/data/stations1111.json",
             samples: ["/data", path].join("/") + ".json",
             type: type,
             date: date,
