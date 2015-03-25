@@ -537,14 +537,14 @@
      */
     function buildPointsFromSamples(stations, samples, projection, transform) {
         var points = [];
-        //console.log(samples);
+        // console.log(samples);
         console.log(stations);
         
 
         samples.forEach(function(sample) {
 
             //console.log(sample);
-                console.log(stations[sample.stationId].coordinates);
+                console.log(sample.stationId);
                 var point = projection(stations[sample.stationId].coordinates);
                 var value = transform(sample);
                 if (value !== null) {

@@ -11,7 +11,8 @@
     "express": "*",
     "swig": "*",
     "mongoose": "*",
-    "nconf": "*"
+    "nconf": "*",
+    "when": "*"
   },
   "keywords": [
     "D3js"
