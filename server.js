@@ -8,7 +8,6 @@ var tools = require('./tools');
 var stationsData = require("./stations-data");
 var current = {};
 current.date = new Date();
-current.samples = [];
 config.argv().env().file({ file: 'config.json' });
 //var port =  config.get('server').port;
 var app = express();
@@ -17,6 +16,7 @@ var app = express();
 
 function buildStationData (stations) {
     var deferreds = [];
+    current.samples = [];
     for(var i = 0, len = stations.length; i < len; i++) {
       var newStation = {
         id: stations[i][0], 
@@ -95,10 +95,10 @@ buildStationData(stationsData)
 })
 .then(startView());
 
-/*var interval = setInterval( function() {
+var interval = setInterval( function() {
+  console.log('output data!!');
   buildStationData(stationsData)
   .then(function pushToCurrent(stations) {
           fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
   });
 }, 1000 * 10);
-*/
