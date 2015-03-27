@@ -59,7 +59,6 @@
      */
     function createSettings(topo) {
         var isFF = /firefox/i.test(navigator.userAgent);
-        console.log(topo);
         var projection = createAlbersProjection(topo.bbox[0], topo.bbox[1], topo.bbox[2], topo.bbox[3], view);
         var bounds = createDisplayBounds(topo.bbox[0], topo.bbox[1], topo.bbox[2], topo.bbox[3], projection);
         var styles = [];
@@ -304,7 +303,6 @@
     function loadJson(resource) {
         var d = when.defer();
         d3.json(resource, function(error, result) {
-            console.log();
             return error ?
                 !error.status ?
                     d.reject({error: -1, message: "Cannot load resource: " + resource, resource: resource}) :
@@ -537,14 +535,8 @@
      */
     function buildPointsFromSamples(stations, samples, projection, transform) {
         var points = [];
-        // console.log(samples);
-        console.log(stations);
-        
-
         samples.forEach(function(sample) {
 
-            //console.log(sample);
-                console.log(sample.stationId);
                 var point = projection(stations[sample.stationId].coordinates);
                 var value = transform(sample);
                 if (value !== null) {

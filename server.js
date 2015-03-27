@@ -10,7 +10,7 @@ var current = {};
 current.date = new Date();
 current.samples = [];
 config.argv().env().file({ file: 'config.json' });
-var port =  config.get('server').port;
+//var port =  config.get('server').port;
 var app = express();
 //var stations = [];
 //var samples = [];
@@ -51,7 +51,7 @@ function buildStationSample(station) {
             stationId: station.id,
           };
           if(res.statusCode === 200) {
-            SampleObj.wv = parseFloat(sampleData.wspeed) * 0.5;
+            SampleObj.wv = parseFloat(sampleData.wspeed) * 0.3;
             SampleObj.wd = tools.cardinalToDegrees(sampleData.currentwdir);
           }
           else {
@@ -84,20 +84,20 @@ function startView() {
   app.get('/', function(req, res) {
     res.render('index.html');
   });
-  app.listen(port);
-  console.info("Listening on port ..." +  port);
+  app.listen(3000);
+  console.info("Listening on port ..." +  3000);
 }
 
 
 buildStationData(stationsData)
 .then(function pushToCurrent(stations) {
-        fs.writeFileSync('./public/data/current.json', JSON.stringify(current));
+        fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
 })
 .then(startView());
 
 var interval = setInterval( function() {
   buildStationData(stationsData)
   .then(function pushToCurrent(stations) {
-          fs.writeFileSync('./public/data/current.json', JSON.stringify(current));
+          fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
   });
 }, 1000 * 60);
