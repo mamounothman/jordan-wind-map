@@ -95,9 +95,10 @@ buildStationData(stationsData)
 })
 .then(startView());
 
-var interval = setInterval( function() {
+/*var interval = setInterval( function() {
   buildStationData(stationsData)
   .then(function pushToCurrent(stations) {
           fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
   });
-}, 1000 * 60);
+}, 1000 * 10);
+*/
