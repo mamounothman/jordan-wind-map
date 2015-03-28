@@ -9,10 +9,7 @@ var stationsData = require("./stations-data");
 var current = {};
 current.date = new Date();
 config.argv().env().file({ file: 'config.json' });
-//var port =  config.get('server').port;
 var app = express();
-//var stations = [];
-//var samples = [];
 
 function buildStationData (stations) {
     var deferreds = [];
