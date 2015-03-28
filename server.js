@@ -98,4 +98,4 @@ var interval = setInterval( function() {
   .then(function pushToCurrent(stations) {
           fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
   });
-}, 1000 * 10);
+}, 1000 * 60);
