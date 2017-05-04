@@ -301,6 +301,7 @@
      * object describing the reason: {error: http-status-code, message: http-status-text, resource:}.
      */
     function loadJson(resource) {
+        // console.log(resource);
         var d = when.defer();
         d3.json(resource, function(error, result) {
             return error ?
@@ -536,11 +537,13 @@
     function buildPointsFromSamples(stations, samples, projection, transform) {
         var points = [];
         samples.forEach(function(sample) {
-
-                var point = projection(stations[sample.stationId].coordinates);
-                var value = transform(sample);
-                if (value !== null) {
-                    points.push([point[0], point[1], value]);
+                if(typeof stations[sample.stationId] != 'undefined') {
+                    var point = projection(stations[sample.stationId].coordinates);
+                    var value = transform(sample);
+                    console.log(sample);
+                    if (value !== null) {
+                        points.push([point[0], point[1], value]);
+                    }
                 }
         });
         return points;
@@ -932,7 +935,7 @@
                 stationId: stationId,
                 name: row[1],
                 address: row[2],
-                coordinates: [row[4], row[3]]  // lon,lat
+                coordinates: [row[3], row[2]]  // lon,lat
             };
         });
         return stations;

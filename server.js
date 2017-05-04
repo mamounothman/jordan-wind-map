@@ -1,27 +1,32 @@
 var fs = require('fs');
 var http = require('http');
+// http.debug = 2;
 var express = require('express');
 var when = require("when");
 var config = require('nconf');
 var swig = require('swig');
 var tools = require('./tools');
 var stationsData = require("./stations-data");
+const querystring = require('querystring');
+// console.log(stationsData);
 var current = {};
 current.date = new Date();
 config.argv().env().file({ file: 'config.json' });
 var app = express();
 
 function buildStationData (stations) {
+  console.log('buildStationData');
     var deferreds = [];
     current.samples = [];
     for(var i = 0, len = stations.length; i < len; i++) {
       var newStation = {
         id: stations[i][0], 
         name: stations[i][1],
-        address: stations[i][2],
-        latitude: stations[i][3],
-        longitude: stations[i][4]
+        // address: stations[i][2],
+        latitude: stations[i][2],
+        longitude: stations[i][3]
       };
+      // console.log(newStation);
       deferreds.push(buildStationSample(newStation).then(function gotIt(sampleData) {
         current.samples.push(sampleData);
       }));
@@ -30,11 +35,15 @@ function buildStationData (stations) {
 }
 
 function buildStationSample(station) {
+  console.log('buildStationSample');
   var deferred = when.defer();
-  http.get({
-    host: 'pro.arabiaweather.com',
-    path: '/data/' + station.name + '/realtime.txt?' + (Math.floor(new Date()/1000))
-  }, function(res) {
+  var options = {
+      host: 'stations.arabiaweather.com',
+      path: '/weatherstation/api/get?ws='+station.id+'&attr=*',
+      method: 'GET',
+
+  };
+  http.get(options, function(res) {
       res.setEncoding('utf8');
       var body = '';
       res.on('data', function(d) {
@@ -43,19 +52,27 @@ function buildStationSample(station) {
 
       res.on('end', function() {
         try {
-          sampleData = tools.parseToJson(body);
-          SampleObj = {
-            stationId: station.id,
-          };
-          if(res.statusCode === 200) {
-            SampleObj.wv = parseFloat(sampleData.wspeed) * 0.3;
-            SampleObj.wd = tools.cardinalToDegrees(sampleData.currentwdir);
-          }
-          else {
-            SampleObj.wv = 0;
-            SampleObj.wd = 0;
+          if(body != 'Not Found') {
+            sampleData = tools.parseToJson(JSON.parse(body));
+
+            
+            SampleObj = {
+              stationId: station.id,
+            };
+
+            if(res.statusCode === 200 && typeof sampleData.windspeed != 'undefined') {
+              SampleObj.wv = parseFloat(sampleData.windspeed);
+              SampleObj.wd = tools.cardinalToDegrees(sampleData.winddir);
+            }
+            else {
+              SampleObj.wv = 0;
+              SampleObj.wd = 0;
+            }
+
+            
           }
           deferred.resolve(SampleObj);
+          
         } catch (err) {
           deferred.reject(new Error('Unable to parse response as JSON' + err));
         }
