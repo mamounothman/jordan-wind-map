@@ -65,7 +65,7 @@
         var settings = {
             projection: projection,
             displayBounds: bounds,
-            particleCount: Math.round(bounds.height / 0.28),
+            particleCount: Math.round(bounds.height / 0.23),
             maxParticleAge: 15,  // max number of frames a particle is drawn before regeneration
             velocityScale: +(bounds.height / 700).toFixed(3),  // particle speed as number of pixels per unit vector
             fieldMaskWidth: isFF ? 2 : Math.ceil(bounds.height * 0.06),  // Wide strokes on FF are very slow
