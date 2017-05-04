@@ -65,12 +65,12 @@
         var settings = {
             projection: projection,
             displayBounds: bounds,
-            particleCount: Math.round(bounds.height / 0.24),
-            maxParticleAge: 40,  // max number of frames a particle is drawn before regeneration
+            particleCount: Math.round(bounds.height / 0.28),
+            maxParticleAge: 15,  // max number of frames a particle is drawn before regeneration
             velocityScale: +(bounds.height / 700).toFixed(3),  // particle speed as number of pixels per unit vector
             fieldMaskWidth: isFF ? 2 : Math.ceil(bounds.height * 0.06),  // Wide strokes on FF are very slow
             fadeFillStyle: isFF ? "rgba(0, 0, 0, 0.95)" : "rgba(0, 0, 0, 0.97)",  // FF Mac alpha behaves differently
-            frameRate: 70,  // desired milliseconds per frame
+            frameRate: 30,  // desired milliseconds per frame
             styles: styles,
             styleIndex: function(m) {  // map wind speed to a style
                 return Math.floor(Math.min(m, 10) / 10 * (styles.length - 1));

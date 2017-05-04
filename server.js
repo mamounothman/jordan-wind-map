@@ -1,6 +1,5 @@
 var fs = require('fs');
 var http = require('http');
-// http.debug = 2;
 var express = require('express');
 var when = require("when");
 var config = require('nconf');
@@ -8,14 +7,12 @@ var swig = require('swig');
 var tools = require('./tools');
 var stationsData = require("./stations-data");
 const querystring = require('querystring');
-// console.log(stationsData);
 var current = {};
 current.date = new Date();
 config.argv().env().file({ file: 'config.json' });
 var app = express();
 
 function buildStationData (stations) {
-  console.log('buildStationData');
     var deferreds = [];
     current.samples = [];
     for(var i = 0, len = stations.length; i < len; i++) {
@@ -26,7 +23,6 @@ function buildStationData (stations) {
         latitude: stations[i][2],
         longitude: stations[i][3]
       };
-      // console.log(newStation);
       deferreds.push(buildStationSample(newStation).then(function gotIt(sampleData) {
         current.samples.push(sampleData);
       }));
@@ -35,7 +31,6 @@ function buildStationData (stations) {
 }
 
 function buildStationSample(station) {
-  console.log('buildStationSample');
   var deferred = when.defer();
   var options = {
       host: 'stations.arabiaweather.com',
@@ -110,7 +105,6 @@ buildStationData(stationsData)
 .then(startView());
 
 var interval = setInterval( function() {
-  console.log('output data!!');
   buildStationData(stationsData)
   .then(function pushToCurrent(stations) {
           fs.writeFileSync(__dirname + '/public/data/current.json', JSON.stringify(current));
