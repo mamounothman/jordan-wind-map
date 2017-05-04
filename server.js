@@ -60,8 +60,8 @@ function buildStationSample(station) {
               SampleObj.wd = tools.cardinalToDegrees(sampleData.winddir);
             }
             else {
-              SampleObj.wv = 0;
-              SampleObj.wd = 0;
+              SampleObj.wv = 2;
+              SampleObj.wd = 180;
             }
 
             
