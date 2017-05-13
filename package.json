@@ -4,19 +4,25 @@
   "description": "Jordan's wind map",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 10000"
   },
   "dependencies": {
-    "mongodb": "*",
+    "body-parser": "^1.17.1",
+    "config": "^1.26.1",
     "express": "*",
-    "swig": "*",
-    "mongoose": "*",
-    "nconf": "*",
-    "when": "*"
+    "mongodb": "*",
+    "mongoose": "^4.9.8",
+    "morgan": "^1.8.1"
   },
   "keywords": [
     "D3js"
   ],
-  "author": "express",
-  "license": "MIT"
+  "author": "Ma'moun Othman",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "webpack": "^2.5.1"
+  }
 }
