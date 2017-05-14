@@ -4,7 +4,7 @@
   "description": "Jordan's wind map",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "export NODE_ENV=dev ; node server.js",
     "test": "mocha --timeout 10000"
   },
   "dependencies": {
