@@ -7,10 +7,10 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a {
 }
 
 body {
-    background: #000006;
+    background: white;
     overflow-x: hidden;
     line-height: 0;
-    color: #eee;
+    color: #000;
 }
 
 .out-boundary {
@@ -111,11 +111,11 @@ p, span {
 }
 
 a, .text-button {
-    color: #888;
+    color: cadetblue;
 }
 
 a:hover, a:focus {
-    color: #fff;
+    color: #000;
     transition: color 125ms ease-in;
     -webkit-transition: color 125ms ease-in;
 }
