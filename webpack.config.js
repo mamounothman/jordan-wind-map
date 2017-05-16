@@ -14,7 +14,13 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             }
-        ]
+        ],
+        rules: [{
+            test: /\.scss$/,
+            use: [{
+                loader: "sass-loader"
+            }]
+        }]
     },
     devServer: {
         inline: true,

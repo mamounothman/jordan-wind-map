@@ -68,12 +68,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-var x = ['cat', 'dogs'];
+let x = ['cat', 'dogs'];
 
 /***/ })
 /******/ ]);
